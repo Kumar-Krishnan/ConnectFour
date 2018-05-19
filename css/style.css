@@ -1,0 +1,7 @@
+/* shaping: sizes, padding, margin, positioning etc. */
+.gameContainer{
+    background-color: aquamarine;
+    width: 85vw;
+    height: 85vh;
+    margin: 6vh auto;
+}

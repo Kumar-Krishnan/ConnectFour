@@ -1,0 +1,7 @@
+// create grid
+    create container box
+    build for loop to append 7 columns to container
+    build for loop to append 6 elemens to each column
+        column as y axis
+        row as x axid
+    
