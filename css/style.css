@@ -1,7 +1,19 @@
-/* shaping: sizes, padding, margin, positioning etc. */
+/* setting the properties for the outermost container, the whole of the 
+game board. Setting the number of columns in the container and making display responsive through using vw vh */
 .gameContainer{
     background-color: aquamarine;
     width: 85vw;
     height: 85vh;
     margin: 6vh auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+}
+
+/* setting the display property of columns, giving border and rounding out shape of columns*/
+.col{
+    background-color: white;
+    border: 2px solid  teal;
+    border-radius: 25px;
+
 }
