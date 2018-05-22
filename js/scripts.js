@@ -42,6 +42,38 @@ var ClickableObject = {
 
     }
 }
-$('clickable').click(ClickableObject.changeColor(this.attr(x),this.attr(y)))
+$('.clickable').click(function(){
+    
+    var conversionCount = 0
+    var xClick = $(this).attr('x')
+    var yClick = $(this).attr('y')
+    if (yClick = 0 && conversionCount === 0) {
+        yClick = 6
+        conversionCount++
+    } else if (yClick = 1 && conversionCount === 0) {
+        yClick = 5
+        conversionCount++
+    } else if (yClick = 2 && conversionCount === 0) {
+        yClick = 4
+        conversionCount++
+    } else if (yClick = 4 && conversionCount === 0) {
+        yClick = 2
+        conversionCount++
+    } else if (yClick = 5 && conversionCount === 0) {
+        yClick = 1
+        conversionCount++
+    } else if (yClick = 6 && conversionCount === 0) {
+        yClick = 0
+        conversionCount++
+    } else if (conversionCount === 1) {
+        yClick = yClick
+    }
+    
+    $(this).removeClass('clickable')
+    console.log(xClick, yClick)
+
+    ClickableObject.changeColor(xClick, yClick)
+    console.log(greaterObjectArray)
+})
 
 });
