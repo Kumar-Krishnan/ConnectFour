@@ -43,3 +43,30 @@ Example Object properties {
 
 
  }
+
+
+ function gridCreator(x,y) {
+    this.x = x,
+    this.y = y,
+    this.valid = false,
+    this.color = "white"
+}
+
+var greaterObjectArray = []
+
+ for (x = 0; x < 7; x++) {
+
+    var newXArray = []
+
+    for (y = 0; y < 6; y++ ) {
+
+    var newYArray = [0,1,2]
+
+
+
+    newXArray.push(newYArray)
+    }
+
+   
+    greaterObjectArray.push()
+}
