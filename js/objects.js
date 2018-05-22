@@ -1,6 +1,6 @@
-var gridArray= [[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6]];
+var gridArray = [[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6],[object1,object2,object3,object4,object5,object6]];
 
-
+var displayArray = get.elementsbyclass('row')
 //maybe place inside objects, so that if a object if flipped, it triggers the graphical representation.
 var viewCreator = {
 
@@ -37,4 +37,9 @@ Example Object properties {
 
         }
     }
+ }
+
+ var objectCreator = {
+
+
  }

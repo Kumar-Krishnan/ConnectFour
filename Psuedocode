@@ -2,6 +2,15 @@
     create container box
     build for loop to append 7 columns to container
     build for loop to append 6 elemens to each column
+    Or just use html and css
         column as y axis
         row as x axid
+
+    Two dimensional array that holds all objects pertaining to grid elements/game slots.
+    Object crator to populate array?
+    Set properties of functional, color, and x and y for objects
+    Create winnerLoop to go though array and check to see if four consecutive colors exist and declare a winner if it does.
+    Test arrays and winner loop
+    
+
     
