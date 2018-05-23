@@ -11,7 +11,7 @@ $(document).ready(function() {
    console.log(greaterObjectArray)
 // 
 
-// Clickable object
+// Global variables that count play count and win counts.
 playCount = 1
 playerOneWinCount = 0
 playerTwoWinCount = 0
@@ -35,24 +35,12 @@ const ClickableObject = {
                 continue
             } else {
                 greaterObjectArray[checker][x] = newValue
-                
-                // const xCoordinateElements = $("div[x='x']")
-                // const exactCoordinateElements = $("xCoordinateElements[y='checker']")
-                // console.log(exactCoordinateElements)
-                // $(exactCoordinateElements).css("background-color" , "red")
-                // // console.log(xCoordinateElements)
 
                 var columnCoordinate = x.toString()
                 var columnCoordinateName = ".col" + columnCoordinate
                 var rowCoordinate = checker.toString()
                 var rowCoordinateName = ".row" + rowCoordinate
-                // console.log(columnCoordinateName)
-                // console.log(rowCoordinateName)
-                // if (newValue === 1) {
-                //     $('.rowCoordinateName.columnCoordinateName.columnCoordinateName').css("background-color" , "purple" )
-                // } else {
-                //     $('.rowCoordinateName.columnCoordinateName.columnCoordinateName').css("background-color" , "green" )
-                // }
+            
                 const changedBox = $(rowCoordinateName, columnCoordinateName)
                 if (newValue === 1) {
                 $(changedBox).css("background-color", "black")
@@ -68,9 +56,7 @@ const ClickableObject = {
                 
                 playCount = playCount +1 
 
-                console.log(greaterObjectArray)
-                // console.log(greaterObjectArray[2][2])
-                
+                console.log(greaterObjectArray)                
                 
                 break
             }
@@ -88,52 +74,36 @@ const ClickableObject = {
 
 const WinChecker = {
 
-
-
     horizontalWinner : function() {
         for (let row = 0; row < 6; row++){
-
-
             for (let column = 0; column < 6; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row][column+ 1] && greaterObjectArray[row][column] === greaterObjectArray[row][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row][column+3] && greaterObjectArray[row][column] !== 0) {
                     WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
-
                 }
                 else {
                     continue
                     }                     
             }
-
-               
-
         }
     },
 
     verticalWinner : function() {
         for (let row = 0; row < 3; row++){
-
-
             for (let column = 0; column < 7; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row+1][column] && greaterObjectArray[row][column] === greaterObjectArray[row+2][column] && greaterObjectArray[row][column] === greaterObjectArray[row+3][column] && greaterObjectArray[row][column] !== 0) {
                     WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
-
                 }
                 else {
                     continue
                     }                     
             }
-
-               
-
         }
-
     },
 
-    
     upDiagonalWinner : function() {
 
         for (let row = 0; row < 2; row++){
@@ -143,19 +113,12 @@ const WinChecker = {
                     WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
-
                 }
                 else {
                     continue
                     }                     
             }
-
-               
-
         }
-
-
-
     },
 
 
@@ -167,21 +130,13 @@ const WinChecker = {
                     WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
-
                 }
                 else {
                     continue
                     }                     
             }
-
-               
-
         }
-
-
-
     }
-
 }
 
 
@@ -189,8 +144,6 @@ const WinChecker = {
 // Assigning winner and resetting board
 
 const WinAssignAndReset = {
-
-
     winConditionMet : function() {
         if (playCount % 2 === 1) {
             playerOneWinCount++
@@ -198,6 +151,8 @@ const WinAssignAndReset = {
         else{
             playerTwoWinCount++
         }
+        
+        this.updateGameBoard()
         $('.row').css("background-color", "white")
         //resets every single array inside the array greaterobjectarray to 0 values and creates a blank game board again.
         greaterObjectArray[0] = [0,0,0,0,0,0,0]
@@ -206,7 +161,12 @@ const WinAssignAndReset = {
         greaterObjectArray[3] = [0,0,0,0,0,0,0]
         greaterObjectArray[4] = [0,0,0,0,0,0,0]
         greaterObjectArray[5] = [0,0,0,0,0,0,0]
+        playCount = 1
+    },
 
+    updateGameBoard : function() {
+        $('#playerOneScore').text(playerOneWinCount)
+        $('#playerTwoScore').text(playerTwoWinCount)
     }
 }
 
@@ -217,16 +177,8 @@ const WinAssignAndReset = {
 
 // pulls column/x value  of column that was clicked from game board and assigns it to Xclick. Xclick is then fed into changeGrid function.
 $('.col').click(function(){
-    
-
     let xClick = $(this).attr('x')
-    
-    
-    // $(event.target).off();
-    // console.log(xClick)
-
     ClickableObject.changeColor(xClick)
-    // console.log(greaterObjectArray)
 })
 
 });
