@@ -85,7 +85,51 @@ var ClickableObject = {
 
         playCount = playCount +1 
 
+    }
+}
 
+var NewClickableObject = {
+    addClick : function (xCoord,yCoord) {
+        
+        var newClickable = $([x ="xCoord
+        
+        "])
+        $([x="#".addClass('clickable')
 
     }
 }
+
+
+changeColor : function (x){
+
+    newValue = 0
+    if (playCount%2 === 1) {
+        newValue = 1
+        greaterObjectArray[y][x] = 1
+    } 
+    else {
+        newValue = 2
+        greaterObjectArray[y][x] = 2
+    }
+
+    for (checker = 0; checker < 6; checker++){
+        if (greaterObjectArray[x][checker] === 0)
+            greaterObjectArray[x][checker] = newValue
+            break;
+    }
+
+
+    playCount = playCount +1 
+
+
+
+}
+
+
+
+[[0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0]]
