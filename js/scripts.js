@@ -17,7 +17,7 @@ playCount = 1
 const ClickableObject = {
 
     changeColor : function (x){
-        newValue = 0
+        let newValue = 0
         // using modue to determine which value to assign to grid, modulusing ever increasing playcount by 2
         if (playCount%2 === 1) {
             newValue = 1
@@ -32,17 +32,17 @@ const ClickableObject = {
             if (greaterObjectArray[checker][x] !== 0) {
                 continue
             } else {
-                greaterObjectArray[checker][x] = newValue;
-                playCount = playCount +1 
+                greaterObjectArray[checker][x] = newValue
+                
                 // const xCoordinateElements = $("div[x='x']")
                 // const exactCoordinateElements = $("xCoordinateElements[y='checker']")
                 // console.log(exactCoordinateElements)
                 // $(exactCoordinateElements).css("background-color" , "red")
                 // // console.log(xCoordinateElements)
 
-                var columnCoordinate = x.toString();
+                var columnCoordinate = x.toString()
                 var columnCoordinateName = ".col" + columnCoordinate
-                var rowCoordinate = checker.toString();
+                var rowCoordinate = checker.toString()
                 var rowCoordinateName = ".row" + rowCoordinate
                 // console.log(columnCoordinateName)
                 // console.log(rowCoordinateName)
@@ -51,51 +51,85 @@ const ClickableObject = {
                 // } else {
                 //     $('.rowCoordinateName.columnCoordinateName.columnCoordinateName').css("background-color" , "green" )
                 // }
-                const changedBox = $(rowCoordinateName, columnCoordinateName);
-                $(changedBox).css("background-color", "red")
+                const changedBox = $(rowCoordinateName, columnCoordinateName)
+                if (newValue === 1) {
+                $(changedBox).css("background-color", "black")
+                } else if (newValue === 2){
+                $(changedBox).css("background-color", "red")    
+                }
+
+                playCount = playCount +1 
+
+                WinChecker.verticalWinner()
+                
+                console.log(greaterObjectArray)
+                // console.log(greaterObjectArray[2][2])
+                
                 
                 break
             }
         }
+    }
+}
 
-       
 
+
+
+
+
+
+
+
+const WinChecker = {
+
+
+
+    verticalWinner : function() {
+        for (let row = 0; row < 6; row++){
+            winCounter = 0
+
+
+            for (let column = 0; column <6; column++) {
+                if (greaterObjectArray[row][column] !== greaterObjectArray[row][column+ 1] && greaterObjectArray[row][column] === 0) {
+                    winCounter = 0
+                }
+                else {
+                    winCounter++
+                    if (winCounter === 4) {
+                        console.log("YOU ARE A WINNER!")
+                        break
+                    }                     
+                }
+
+               
+
+            }
+        }
 
 
     }
+
 }
+
+
+
+
+
+
+
+
+// pulls column/x value  of column that was clicked from game board and assigns it to Xclick. Xclick is then fed into changeGrid function.
 $('.col').click(function(){
     
-    let conversionCount = 0
+
     let xClick = $(this).attr('x')
-    // var yClick = $(this).attr('y')
-    // if (yClick = 0 && conversionCount === 0) {
-    //     yClick = 6
-    //     conversionCount++
-    // } else if (yClick = 1 && conversionCount === 0) {
-    //     yClick = 5
-    //     conversionCount++
-    // } else if (yClick = 2 && conversionCount === 0) {
-    //     yClick = 4
-    //     conversionCount++
-    // } else if (yClick = 4 && conversionCount === 0) {
-    //     yClick = 2
-    //     conversionCount++
-    // } else if (yClick = 5 && conversionCount === 0) {
-    //     yClick = 1
-    //     conversionCount++
-    // } else if (yClick = 6 && conversionCount === 0) {
-    //     yClick = 0
-    //     conversionCount++
-    // } else if (conversionCount === 1) {
-    //     yClick = yClick
-    // }
+    
     
     // $(event.target).off();
-    console.log(xClick)
+    // console.log(xClick)
 
     ClickableObject.changeColor(xClick)
-    console.log(greaterObjectArray)
+    // console.log(greaterObjectArray)
 })
 
 });

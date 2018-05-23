@@ -133,3 +133,24 @@ changeColor : function (x){
 [0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0]]
+
+
+const WinChecker = {
+
+
+     horizontalWinChecker : function() {
+        let arrayLength = 0
+        for (i=0; i <7; i++ ){
+            if( greaterObjectArray[i][2]=== greaterObjectArray[i+1][2]) {
+                arrayLength++
+            }
+            else{
+                arrayLength = 0
+            }
+            if (arrayLength === 4){
+                console.log("YOU WIN!")
+            }
+        }
+    }
+
+}
