@@ -53,6 +53,7 @@ const ClickableObject = {
                 WinChecker.verticalWinner()
                 WinChecker.upDiagonalWinner()
                 WinChecker.downDiagonalWinner()
+                WinAssignAndReset.resetDueToDraw()
                 
                 playCount = playCount +1 
 
@@ -147,14 +148,20 @@ const WinAssignAndReset = {
     winConditionMet : function() {
         if (playCount % 2 === 1) {
             playerOneWinCount++
+            alert("Player One Wins!")
         }
         else{
             playerTwoWinCount++
+            alert("Player Two Wins!")
         }
         
-        this.updateGameBoard()
-        $('.row').css("background-color", "white")
+        this.updateGameScoreBoard()
+        this.resetDueToWin()
+    },
+
+    resetDueToWin : function() {
         //resets every single array inside the array greaterobjectarray to 0 values and creates a blank game board again.
+        $('.row').css("background-color", "white")
         greaterObjectArray[0] = [0,0,0,0,0,0,0]
         greaterObjectArray[1] = [0,0,0,0,0,0,0]
         greaterObjectArray[2] = [0,0,0,0,0,0,0]
@@ -164,9 +171,33 @@ const WinAssignAndReset = {
         playCount = 1
     },
 
-    updateGameBoard : function() {
+    updateGameScoreBoard : function() {
         $('#playerOneScore').text(playerOneWinCount)
         $('#playerTwoScore').text(playerTwoWinCount)
+    },
+
+    resetDueToDraw : function() {
+
+        let countOfNonZeros = 0
+        for (row = 0; row <6;row++) {
+
+            for(column = 0; column < 7; column++ ){
+
+                if(greaterObjectArray[row][column]!== 0){
+                    countOfNonZeros++
+                    
+
+                }
+
+            }
+              // ITS A DRAW!
+            if (countOfNonZeros === 42) {
+                alert("You have both exhausted all options! Begin Anew!")
+                this.resetDueToWin()
+            }
+        
+        }
+      
     }
 }
 

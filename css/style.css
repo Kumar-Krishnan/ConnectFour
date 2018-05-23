@@ -3,6 +3,7 @@ game board. Setting the number of columns in the container and making display re
 .gameContainer{
     background-color: rgb(200,250,255);
     width: 60vw;
+    min-width: 800px;
     height: 85vh;
     margin: 6vh auto;
     display: grid;
