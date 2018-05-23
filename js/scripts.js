@@ -60,7 +60,10 @@ const ClickableObject = {
 
                 playCount = playCount +1 
 
+                WinChecker.horizontalWinner()
                 WinChecker.verticalWinner()
+                WinChecker.upDiagonalWinner()
+                WinChecker.downDiagonalWinner()
                 
                 console.log(greaterObjectArray)
                 // console.log(greaterObjectArray[2][2])
@@ -84,32 +87,108 @@ const WinChecker = {
 
 
 
-    verticalWinner : function() {
+    horizontalWinner : function() {
         for (let row = 0; row < 6; row++){
             winCounter = 0
 
 
-            for (let column = 0; column <6; column++) {
-                if (greaterObjectArray[row][column] !== greaterObjectArray[row][column+ 1] && greaterObjectArray[row][column] === 0) {
-                    winCounter = 0
+            for (let column = 0; column < 6; column++) {
+                if (greaterObjectArray[row][column] === greaterObjectArray[row][column+ 1] && greaterObjectArray[row][column] === greaterObjectArray[row][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row][column+3] && greaterObjectArray[row][column] !== 0) {
+                    winCounter = 4
+                    console.log("YOU ARE A WINNER!")
+                    break
+
                 }
                 else {
-                    winCounter++
-                    if (winCounter === 4) {
-                        console.log("YOU ARE A WINNER!")
-                        break
+                    continue
                     }                     
-                }
+            }
 
                
 
-            }
         }
+    },
+
+    verticalWinner : function() {
+        for (let row = 0; row < 3; row++){
+            winCounter = 0
+
+
+            for (let column = 0; column < 7; column++) {
+                if (greaterObjectArray[row][column] === greaterObjectArray[row+1][column] && greaterObjectArray[row][column] === greaterObjectArray[row+2][column] && greaterObjectArray[row][column] === greaterObjectArray[row+3][column] && greaterObjectArray[row][column] !== 0) {
+                    winCounter = 4
+                    console.log("YOU ARE A WINNER!")
+                    break
+
+                }
+                else {
+                    continue
+                    }                     
+            }
+
+               
+
+        }
+
+    },
+
+    
+    upDiagonalWinner : function() {
+
+        for (let row = 0; row < 2; row++){
+            winCounter = 0
+
+
+            for (let column = 0; column < 3; column++) {
+                if (greaterObjectArray[row][column] === greaterObjectArray[row+1][column+1] && greaterObjectArray[row][column] === greaterObjectArray[row+2][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row+3][column+3] && greaterObjectArray[row][column] !== 0) {
+                    winCounter = 4
+                    console.log("YOU ARE A WINNER!")
+                    break
+
+                }
+                else {
+                    continue
+                    }                     
+            }
+
+               
+
+        }
+
+
+
+    },
+
+
+    downDiagonalWinner : function() {
+
+        for (let row = 5; row > 2; row--){
+            winCounter = 0
+
+
+            for (let column = 0; column < 3; column++) {
+                if (greaterObjectArray[row][column] === greaterObjectArray[row-1][column+1] && greaterObjectArray[row][column] === greaterObjectArray[row-2][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row-3][column+3] && greaterObjectArray[row][column] !== 0) {
+                    winCounter = 4
+                    console.log("YOU ARE A WINNER!")
+                    break
+
+                }
+                else {
+                    continue
+                    }                     
+            }
+
+               
+
+        }
+
 
 
     }
 
 }
+
+
 
 
 
