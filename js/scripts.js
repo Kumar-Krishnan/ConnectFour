@@ -43,20 +43,23 @@ const ClickableObject = {
             
                 const changedBox = $(rowCoordinateName, columnCoordinateName)
                 if (newValue === 1) {
-                $(changedBox).css("background-color", "black")
+                $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
                 } else if (newValue === 2){
-                $(changedBox).css("background-color", "red")    
+                $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 229, 91),rgb(221, 115, 35)')    
                 }
 
+                // important to place this before win checkers.
+                
 
                 WinChecker.horizontalWinner()
                 WinChecker.verticalWinner()
                 WinChecker.upDiagonalWinner()
                 WinChecker.downDiagonalWinner()
-                WinAssignAndReset.resetDueToDraw()
                 
                 playCount = playCount +1 
+                WinAssignAndReset.resetDueToDraw()
 
+                console.log(playCount)
                 console.log(greaterObjectArray)                
                 
                 break
@@ -161,14 +164,14 @@ const WinAssignAndReset = {
 
     resetDueToWin : function() {
         //resets every single array inside the array greaterobjectarray to 0 values and creates a blank game board again.
-        $('.row').css("background-color", "white")
+        $('.row').css("background", " rgba(16, 17, 17, 0.856)")
         greaterObjectArray[0] = [0,0,0,0,0,0,0]
         greaterObjectArray[1] = [0,0,0,0,0,0,0]
         greaterObjectArray[2] = [0,0,0,0,0,0,0]
         greaterObjectArray[3] = [0,0,0,0,0,0,0]
         greaterObjectArray[4] = [0,0,0,0,0,0,0]
         greaterObjectArray[5] = [0,0,0,0,0,0,0]
-        playCount = 1
+        playCount = 0
     },
 
     updateGameScoreBoard : function() {
@@ -194,6 +197,7 @@ const WinAssignAndReset = {
             if (countOfNonZeros === 42) {
                 alert("You have both exhausted all options! Begin Anew!")
                 this.resetDueToWin()
+                
             }
         
         }

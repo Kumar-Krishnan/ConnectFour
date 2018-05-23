@@ -1,27 +1,23 @@
 /* setting the properties for the outermost container, the whole of the 
 game board. Setting the number of columns in the container and making display responsive through using vw vh */
-.totalBoard{
-    display:grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    background-color: teal;
-}
+
 .gameContainer{
-    background-color: rgb(200,250,255);
+    background-color:black;
     width: 60vw;
     min-width: 800px;
     height: 85vh;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border: 2px solid black;
+    border: 2px solid red;
     border-radius: 3%;
 
 }
 
 /* setting the display property of columns, giving border and rounding out shape of columns*/
 .col{
-    background-color: rgb(200,250,255);
-    border: 2px solid rgb(100, 100, 20);
+    background-color: black;
+    border: 2px solid red;
     border-radius: 100px;
 
 }
@@ -36,14 +32,42 @@ game board. Setting the number of columns in the container and making display re
 /* setting the display property of rows, giving border and rounding out shape of columns*/
 
 .row{
-    background-color: white;
-    border: 2px ridge rgb(50,50,50);
+    background: rgba(16, 17, 17, 0.856);
+    border: 2px ridge rgb(25, 224, 231);
     border-radius: 55%; 
+}
+body{
+    background: linear-gradient(to bottom, rgb(182, 90, 14), rgb(204, 193, 193))
+
 }
 
 
 
 /* display elements that display text and alerts */
+header{
+    text-align: center;
+    background: linear-gradient(to bottom, rgb(231, 255, 255), rgb(114, 195, 222));
+    border-radius: 25px;
+    
+}
+.begginingTitle{
+    margin:0 auto;
+    padding-top: 20px;
+    padding-bottom:20px;
+}
+
+.totalBoardWithInstructions{
+    display:grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    background-color: teal;
+}
+.instructions{
+    display:grid;
+    grid-template-rows: 2fr 1fr 2fr;
+}
+.resetter{
+    text-align: center;
+}
 .scores{
     display:grid;
     width: 100%;
