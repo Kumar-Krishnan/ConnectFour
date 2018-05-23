@@ -13,6 +13,8 @@ $(document).ready(function() {
 
 // Clickable object
 playCount = 1
+playerOneWinCount = 0
+playerTwoWinCount = 0
 
 const ClickableObject = {
 
@@ -58,13 +60,14 @@ const ClickableObject = {
                 $(changedBox).css("background-color", "red")    
                 }
 
-                playCount = playCount +1 
 
                 WinChecker.horizontalWinner()
                 WinChecker.verticalWinner()
                 WinChecker.upDiagonalWinner()
                 WinChecker.downDiagonalWinner()
                 
+                playCount = playCount +1 
+
                 console.log(greaterObjectArray)
                 // console.log(greaterObjectArray[2][2])
                 
@@ -89,12 +92,11 @@ const WinChecker = {
 
     horizontalWinner : function() {
         for (let row = 0; row < 6; row++){
-            winCounter = 0
 
 
             for (let column = 0; column < 6; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row][column+ 1] && greaterObjectArray[row][column] === greaterObjectArray[row][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row][column+3] && greaterObjectArray[row][column] !== 0) {
-                    winCounter = 4
+                    WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
 
@@ -111,12 +113,11 @@ const WinChecker = {
 
     verticalWinner : function() {
         for (let row = 0; row < 3; row++){
-            winCounter = 0
 
 
             for (let column = 0; column < 7; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row+1][column] && greaterObjectArray[row][column] === greaterObjectArray[row+2][column] && greaterObjectArray[row][column] === greaterObjectArray[row+3][column] && greaterObjectArray[row][column] !== 0) {
-                    winCounter = 4
+                    WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
 
@@ -136,12 +137,10 @@ const WinChecker = {
     upDiagonalWinner : function() {
 
         for (let row = 0; row < 2; row++){
-            winCounter = 0
-
 
             for (let column = 0; column < 3; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row+1][column+1] && greaterObjectArray[row][column] === greaterObjectArray[row+2][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row+3][column+3] && greaterObjectArray[row][column] !== 0) {
-                    winCounter = 4
+                    WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
 
@@ -163,12 +162,9 @@ const WinChecker = {
     downDiagonalWinner : function() {
 
         for (let row = 5; row > 2; row--){
-            winCounter = 0
-
-
             for (let column = 0; column < 3; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row-1][column+1] && greaterObjectArray[row][column] === greaterObjectArray[row-2][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row-3][column+3] && greaterObjectArray[row][column] !== 0) {
-                    winCounter = 4
+                    WinAssignAndReset.winConditionMet()
                     console.log("YOU ARE A WINNER!")
                     break
 
@@ -190,7 +186,29 @@ const WinChecker = {
 
 
 
+// Assigning winner and resetting board
 
+const WinAssignAndReset = {
+
+
+    winConditionMet : function() {
+        if (playCount % 2 === 1) {
+            playerOneWinCount++
+        }
+        else{
+            playerTwoWinCount++
+        }
+        $('.row').css("background-color", "white")
+        //resets every single array inside the array greaterobjectarray to 0 values and creates a blank game board again.
+        greaterObjectArray[0] = [0,0,0,0,0,0,0]
+        greaterObjectArray[1] = [0,0,0,0,0,0,0]
+        greaterObjectArray[2] = [0,0,0,0,0,0,0]
+        greaterObjectArray[3] = [0,0,0,0,0,0,0]
+        greaterObjectArray[4] = [0,0,0,0,0,0,0]
+        greaterObjectArray[5] = [0,0,0,0,0,0,0]
+
+    }
+}
 
 
 

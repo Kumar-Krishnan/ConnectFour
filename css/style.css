@@ -32,3 +32,15 @@ game board. Setting the number of columns in the container and making display re
     border: 2px solid  teal;
     border-radius: 100px; 
 }
+
+.winBoard{
+    display:grid;
+    width: 100%;
+    height: 4vh;
+    grid-template-columns: 1fr 1fr;
+}
+
+.playerWin{
+    text-align: center;
+    
+}
