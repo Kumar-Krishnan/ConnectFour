@@ -36,17 +36,19 @@ const ClickableObject = {
             } else {
                 greaterObjectArray[checker][x] = newValue
 
-                var columnCoordinate = x.toString()
-                var columnCoordinateName = ".col" + columnCoordinate
-                var rowCoordinate = checker.toString()
-                var rowCoordinateName = ".row" + rowCoordinate
+
+                ColorChanger.gridColorer(x,checker,newValue)
+                // var columnCoordinate = x.toString()
+                // var columnCoordinateName = ".col" + columnCoordinate
+                // var rowCoordinate = checker.toString()
+                // var rowCoordinateName = ".row" + rowCoordinate
             
-                const changedBox = $(rowCoordinateName, columnCoordinateName)
-                if (newValue === 1) {
-                $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
-                } else if (newValue === 2){
-                $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 229, 91),rgb(221, 115, 35)')    
-                }
+                // const changedBox = $(rowCoordinateName, columnCoordinateName)
+                // if (newValue === 1) {
+                // $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
+                // } else if (newValue === 2){
+                // $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 229, 91),rgb(221, 115, 35)')    
+                // }
 
                 // important to place this before win checkers.
                 
@@ -205,7 +207,24 @@ const WinAssignAndReset = {
     }
 }
 
-const ColorChanger : 
+const ColorChanger = {
+
+    gridColorer : function(x,y,player) {
+        var columnCoordinate = x.toString()
+        var columnCoordinateName = ".col" + columnCoordinate
+        var rowCoordinate = y.toString()
+        var rowCoordinateName = ".row" + rowCoordinate
+    
+        const changedBox = $(rowCoordinateName, columnCoordinateName)
+        if (player === 1) {
+        $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
+        } else if (player === 2){
+        $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 229, 91),rgb(221, 115, 35)')    
+        }
+
+    }
+
+}
 
 
 
