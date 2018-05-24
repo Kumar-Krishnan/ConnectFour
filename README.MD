@@ -9,6 +9,7 @@ Players take turns being the first one to start playing, between rounds. Players
 player scores and to begin anew with a whole new series of games.
 
 The challenges of the project
+------------------------------
   -Creating a 2 dimensional array to represent the visual grid that players interact with.
   -Making that array responsive to the actions of the player on the screen
   -Working with a top down array while the visual grid is bottom up.
@@ -21,6 +22,7 @@ The challenges of the project
  The theme of this project borrows from the Tron Series.
  
  Technologies used
+ ----------------
  
    Work Board:      https://trello.com/b/jzYJsZFf/connectfour
    Libraries used:  Twitter Bootstrap (only for one function, modal for alerting winners.
@@ -29,8 +31,20 @@ The challenges of the project
    
    
    Wire Frame:
+   ----------
 
-   ![Frame 1](WireFrame/screen1.jpg?raw=true)
+   First picture: https://i.imgur.com/DKeuU0C.jpg
+   Second picture: https://imgur.com/3qbxS9v
+   Third picture: https://imgur.com/E3XwPtE
+   Fourth picture: https://imgur.com/VEGsMGg
+   Fifth picture: https://imgur.com/RmjCYLo
+   Sixth picture: https://imgur.com/NXwGbTy
+   Seventh picture: https://imgur.com/vcegdmm
+   Eight picture: https://imgur.com/KXriu7W
    
+   Future Development
+   -------------
+   Sound when the game initializes.
+   Slowly forming game grid.
 
  
