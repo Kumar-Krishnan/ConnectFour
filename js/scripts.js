@@ -12,6 +12,7 @@ $(document).ready(function() {
 // 
 
 // Global variables that count play count and win counts.
+startCount = 1
 playCount = 1
 playerOneWinCount = 0
 playerTwoWinCount = 0
@@ -30,43 +31,28 @@ const ClickableObject = {
 
         }
         // skip over tiles that already have a red or black color value (1, or 2) and assign the new player color to the first element in the column that was clicked.
-        for (checker = 0; checker < 6; checker++){
-            if (greaterObjectArray[checker][x] !== 0) {
-                continue
-            } else {
-                greaterObjectArray[checker][x] = newValue
+        GridChanger.gridAssigner(x,newValue)
+        // for (checker = 0; checker < 6; checker++){
+        //     if (greaterObjectArray[checker][x] !== 0) {
+        //         continue
+        //     } else {
+        //         greaterObjectArray[checker][x] = newValue
 
 
-                ColorChanger.gridColorer(x,checker,newValue)
-                // var columnCoordinate = x.toString()
-                // var columnCoordinateName = ".col" + columnCoordinate
-                // var rowCoordinate = checker.toString()
-                // var rowCoordinateName = ".row" + rowCoordinate
-            
-                // const changedBox = $(rowCoordinateName, columnCoordinateName)
-                // if (newValue === 1) {
-                // $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
-                // } else if (newValue === 2){
-                // $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 229, 91),rgb(221, 115, 35)')    
-                // }
+        //         ColorChanger.gridColorer(x,checker,newValue)
+        //         WinChecker.horizontalWinner()
+        //         WinChecker.verticalWinner()
+        //         WinChecker.upDiagonalWinner()
+        //         WinChecker.downDiagonalWinner()
+        //         playCount = playCount +1 
+        //         WinAssignAndReset.resetDueToDraw()
 
-                // important to place this before win checkers.
+        //         console.log(playCount)
+        //         console.log(greaterObjectArray)                
                 
-
-                WinChecker.horizontalWinner()
-                WinChecker.verticalWinner()
-                WinChecker.upDiagonalWinner()
-                WinChecker.downDiagonalWinner()
-                
-                playCount = playCount +1 
-                WinAssignAndReset.resetDueToDraw()
-
-                console.log(playCount)
-                console.log(greaterObjectArray)                
-                
-                break
-            }
-        }
+        //         break
+        //     }
+        // }
     }
 }
 
@@ -226,15 +212,41 @@ const ColorChanger = {
 
 }
 
+    const GridChanger = {
 
+        gridAssigner : function(x,newValue) {
+        
+            for (row = 0; row < 6; row++){
+                if (greaterObjectArray[row][x] !== 0) {
+                    continue
+                } else {
+                    greaterObjectArray[row][x] = newValue
+                    ColorChanger.gridColorer(x,row,newValue)
+                    WinChecker.horizontalWinner()
+                    WinChecker.verticalWinner()
+                    WinChecker.upDiagonalWinner()
+                    WinChecker.downDiagonalWinner()
+                    playCount = playCount +1 
+                    WinAssignAndReset.resetDueToDraw()
+    
+                    console.log(playCount)
+                    console.log(greaterObjectArray)                
+                    
+                    break
+                }
+            }
+        }
+    }
 
 
 
 
 // pulls column/x value  of column that was clicked from game board and assigns it to Xclick. Xclick is then fed into changeGrid function.
 $('.col').click(function(){
-    let xClick = $(this).attr('x')
-    ClickableObject.changeColor(xClick)
+    if(startCount > 0) {
+        let xClick = $(this).attr('x')
+        ClickableObject.changeColor(xClick)
+    }
 })
 
 });
