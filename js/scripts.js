@@ -216,7 +216,7 @@ const ColorChanger = {
         if (player === 1) {
         $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
         } else if (player === 2){
-        $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 150, 50),rgb(255, 115, 35)')    
+        $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 150, 50),rgb(230, 50, 35)')    
         }
 
     }
