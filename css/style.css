@@ -54,7 +54,7 @@ html{
 /* display elements that display text and alerts */
 header{
     text-align: center;
-    background: linear-gradient(to bottom, rgb(231, 255, 255), rgb(114, 195, 222));
+    background-color: black;
     border-radius: 25px;
     
 }
@@ -131,13 +131,13 @@ button{
     background-color: black;
 }
 .gameInstructions{
-    color: white;
+    color: rgb(25, 224, 231);
 }
 h1{
     color: Red;
 }
 h1 #titleSpan{
-    color:green;
+    color: rgb(25, 224, 231);
 }
 .gameInstructions{
     padding: 0 9px;
@@ -146,4 +146,6 @@ h1 #titleSpan{
     background: black;
     border: 2px solid rgb(25, 224, 231);
     border-radius:25px;
+    color: rgb(243, 24, 9);
+    padding : 0 9px;
 }

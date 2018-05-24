@@ -11,16 +11,19 @@ $(document).ready(function() {
    console.log(greaterObjectArray)
 // 
 
-// Global variables that count play count and win counts.
+// Global variables that count play count and win counts and who started first last round.
+
     whichPlayerLeads = 1
     startCount = 0
     playCount = 1
     playerOneWinCount = 0
     playerTwoWinCount = 0
 
+    //the consquences of player clicking a column element.
+
     const ClickableObject = {
 
-        changeColor : function (x){
+        clickConsequence : function (x){
             let newValue = 0
             // using modue to determine which value to assign to grid, modulusing ever increasing playcount by 2
             if (playCount%2 === 1) {
@@ -31,29 +34,9 @@ $(document).ready(function() {
                 newValue = 2
 
             }
-            // skip over tiles that already have a red or black color value (1, or 2) and assign the new player color to the first element in the column that was clicked.
+            // assigns new value to array and calls all subsequent functions.
             GridChanger.gridAssigner(x,newValue)
-            // for (checker = 0; checker < 6; checker++){
-            //     if (greaterObjectArray[checker][x] !== 0) {
-            //         continue
-            //     } else {
-            //         greaterObjectArray[checker][x] = newValue
 
-
-            //         ColorChanger.gridColorer(x,checker,newValue)
-            //         WinChecker.horizontalWinner()
-            //         WinChecker.verticalWinner()
-            //         WinChecker.upDiagonalWinner()
-            //         WinChecker.downDiagonalWinner()
-            //         playCount = playCount +1 
-            //         WinAssignAndReset.resetDueToDraw()
-
-            //         console.log(playCount)
-            //         console.log(greaterObjectArray)                
-                    
-            //         break
-            //     }
-            // }
         }
     }
 
@@ -64,9 +47,10 @@ $(document).ready(function() {
 
 
 
-
+    //goes through numerical array and looks for winning patterns and calls win function if found.
 const WinChecker = {
 
+    // checks for winning horizontal pattern.
     horizontalWinner : function() {
         for (let row = 0; row < 6; row++){
             for (let column = 0; column < 6; column++) {
@@ -82,6 +66,7 @@ const WinChecker = {
         }
     },
 
+    // checks for winning vertical pattern.
     verticalWinner : function() {
         for (let row = 0; row < 3; row++){
             for (let column = 0; column < 7; column++) {
@@ -97,6 +82,7 @@ const WinChecker = {
         }
     },
 
+    //checks for winning diagonal pattern starting from bottom and going up.
     upDiagonalWinner : function() {
 
         for (let row = 0; row < 2; row++){
@@ -114,7 +100,7 @@ const WinChecker = {
         }
     },
 
-
+    //checks for winning diagonal pattern starting from top and going down.
     downDiagonalWinner : function() {
 
         for (let row = 5; row > 2; row--){
@@ -136,6 +122,7 @@ const WinChecker = {
 
 // Assigning winner and resetting board
 
+// updates player win count and alerts them when a player has won. This func used by win checkers. Resets the board.
 const WinAssignAndReset = {
     winConditionMet : function() {
         if (playCount % 2 === 1) {
@@ -151,6 +138,7 @@ const WinAssignAndReset = {
         this.resetDueToWin()
     },
 
+    // name reset due to win is misleading, it is used to reset in multiple occasions. Resets visual board, and numerical arrays to original values.
     resetDueToWin : function() {
         //resets every single array inside the array greaterobjectarray to 0 values and creates a blank game board again.
         $('.row').css("background", " rgba(16, 17, 17, 0.856)")
@@ -168,11 +156,15 @@ const WinAssignAndReset = {
         whichPlayerLeads++
     },
 
+    // pulls global player win counts and pushes them into appropriate html span elements to display scores
     updateGameScoreBoard : function() {
         $('#playerOneScore').text(playerOneWinCount)
         $('#playerTwoScore').text(playerTwoWinCount)
     },
 
+
+    // resets the board if players have filled the board with no plausible winner and no more possible game moves. 
+    // does this by seeing that all array values are non empty.
     resetDueToDraw : function() {
 
         let countOfNonZeros = 0
@@ -196,9 +188,22 @@ const WinAssignAndReset = {
         
         }
       
+    },
+    
+    
+    resetDueToButton : function (){
+        // resets win counts, resets count for alternating players and resets lead player to player 1.
+        playerOneWinCount = 0
+        playerTwoWinCount = 0
+        WinAssignAndReset.updateGameScoreBoard()
+        whichPlayerLeads = 1
+        playCount = 1
+        WinAssignAndReset.resetDueToWin()
+
     }
 }
-
+// reponsible for parsing column visual grid attribute values into strings, conconating to .col and .row to choose specific grid box to be 
+// colored and change color, based on modus of global play count to appropriate player color.
 const ColorChanger = {
 
     gridColorer : function(x,y,player) {
@@ -211,51 +216,57 @@ const ColorChanger = {
         if (player === 1) {
         $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
         } else if (player === 2){
-        $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 229, 91),rgb(221, 115, 35)')    
+        $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 150, 50),rgb(255, 115, 35)')    
         }
 
     }
 
 }
 
-    const GridChanger = {
+// responsible for taking in user input through clicking and then changing the grid value and then pulling all cascading functions. 
+const GridChanger = {
 
-        gridAssigner : function(x,newValue) {
-        
-            for (row = 0; row < 6; row++){
-                if (greaterObjectArray[row][x] !== 0) {
-                    continue
-                } else {
-                    greaterObjectArray[row][x] = newValue
-                    ColorChanger.gridColorer(x,row,newValue)
-                    WinChecker.horizontalWinner()
-                    WinChecker.verticalWinner()
-                    WinChecker.upDiagonalWinner()
-                    WinChecker.downDiagonalWinner()
-                    playCount = playCount +1 
-                    WinAssignAndReset.resetDueToDraw()
+    gridAssigner : function(x,newValue) {
     
-                    console.log(playCount)
-                    console.log(greaterObjectArray)                
-                    
-                    break
-                }
+        for (row = 0; row < 6; row++){
+            if (greaterObjectArray[row][x] !== 0) {
+                continue
+            } else {
+                greaterObjectArray[row][x] = newValue
+                ColorChanger.gridColorer(x,row,newValue)
+                WinChecker.horizontalWinner()
+                WinChecker.verticalWinner()
+                WinChecker.upDiagonalWinner()
+                WinChecker.downDiagonalWinner()
+                playCount = playCount +1 
+                WinAssignAndReset.resetDueToDraw()
+
+                console.log(playCount)
+                console.log(greaterObjectArray)                
+                
+                break
             }
         }
     }
+}
 
 
 
 
+// all button interactions.
 // pulls column/x value  of column that was clicked from game board and assigns it to Xclick. Xclick is then fed into changeGrid function.
     $('.col').click(function(){
         if(startCount > 0) {
             let xClick = $(this).attr('x')
-            ClickableObject.changeColor(xClick)
+            ClickableObject.clickConsequence(xClick)
         }
     })
 
+    // allows columns to be clickable and for the game to begin.
     $('#startButton').click(function(){
         startCount = 1
     })
-});
+
+    //resets the player scores and board.
+    $('#resetButton').click(WinAssignAndReset.resetDueToButton)
+})
