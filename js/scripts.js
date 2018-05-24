@@ -12,6 +12,7 @@ $(document).ready(function() {
 // 
 
 // Global variables that count play count and win counts.
+    whichPlayerLeads = 1
     startCount = 0
     playCount = 1
     playerOneWinCount = 0
@@ -159,7 +160,12 @@ const WinAssignAndReset = {
         greaterObjectArray[3] = [0,0,0,0,0,0,0]
         greaterObjectArray[4] = [0,0,0,0,0,0,0]
         greaterObjectArray[5] = [0,0,0,0,0,0,0]
-        playCount = 0
+        if(whichPlayerLeads%2 === 0){
+            playCount = 0
+        } else {
+            playCount = 1
+        }
+        whichPlayerLeads++
     },
 
     updateGameScoreBoard : function() {
