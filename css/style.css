@@ -7,7 +7,7 @@ game board. Setting the number of columns in the container and making display re
     background-color:black;
     width: 60vw;
     min-width: 800px;
-    height: 85vh;
+    height: 90vh;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -153,6 +153,10 @@ h1 #titleSpan{
     border-radius:25px;
     color: rgb(243, 24, 9);
     padding : 0 9px;
+    text-align: center;
+}
+p.historyContent{
+    padding-top: 15vh;
 }
 
 #startButton{

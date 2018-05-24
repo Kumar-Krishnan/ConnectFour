@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+    $('.modal').modal('show');
+
+    var modalHider = function() {
+
+    }
+
+    $('body').click(function(){
+        
+        $('.modal').modal('hide')
+    
+    })
+        
+
+
    //starting grid that is 7x6 to represent grid for game logic. 0 = empty, 1= player 1 tile, 2 = player 2 tile.
    const greaterObjectArray = [[0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0],
