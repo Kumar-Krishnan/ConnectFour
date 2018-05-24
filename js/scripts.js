@@ -293,6 +293,9 @@ const GridChanger = {
     // allows columns to be clickable and for the game to begin.
     $('#startButton').click(function(){
         startCount = 1
+        let audioBegin = new Audio('../audio/battle.mp3')
+
+        audioBegin.play()
     })
 
     //resets the player scores and board.
@@ -305,4 +308,7 @@ const GridChanger = {
         $('.modal').modal('hide')
     
     })
+
+    
 })
+
