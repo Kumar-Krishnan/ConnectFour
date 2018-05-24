@@ -134,12 +134,12 @@ const WinAssignAndReset = {
         if (playCount % 2 === 1) {
             playerOneWinCount++
             // alert("Player One Wins!")
-            winner = "One"
+            winner = "One Wins!"
         }
         else{
             playerTwoWinCount++
             // alert("Player Two Wins!") 
-            winner = "Two"
+            winner = "Two Wins!"
         }
         $('#winnerDisplay').html(winner)
         $('.modal').modal('show');
@@ -191,7 +191,9 @@ const WinAssignAndReset = {
             }
               // ITS A DRAW!
             if (countOfNonZeros === 42) {
-                alert("You have both exhausted all options! Begin Anew!")
+                $('#winnerDisplay').html("have both exhausted all options. This is a draw. Meaning neither party won. Or that neither lost. Depends on your perspective.")
+                $('.modal').modal('show')
+                // alert("You have both exhausted all options! Begin Anew!")
                 this.resetDueToWin()
                 
             }
