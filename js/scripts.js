@@ -1,16 +1,7 @@
 $(document).ready(function() {
 
-    $('.modal').modal('show');
 
-    var modalHider = function() {
 
-    }
-
-    $('body').click(function(){
-        
-        $('.modal').modal('hide')
-    
-    })
         
 
 
@@ -139,15 +130,20 @@ const WinChecker = {
 // updates player win count and alerts them when a player has won. This func used by win checkers. Resets the board.
 const WinAssignAndReset = {
     winConditionMet : function() {
+        let winner = ""
         if (playCount % 2 === 1) {
             playerOneWinCount++
-            alert("Player One Wins!")
+            // alert("Player One Wins!")
+            winner = "One"
         }
         else{
             playerTwoWinCount++
-            alert("Player Two Wins!")
+            // alert("Player Two Wins!") 
+            winner = "Two"
         }
-        
+        $('#winnerDisplay').html(winner)
+        $('.modal').modal('show');
+        // WinDisplayer.showWinner(winner)
         this.updateGameScoreBoard()
         this.resetDueToWin()
     },
@@ -264,6 +260,22 @@ const GridChanger = {
     }
 }
 
+// const WinDisplayer = {
+    
+//     showWinner : function(winner){
+//        let winnerString = ""
+
+//        if (winner === 1) {
+//            winnerString = "One"
+//        } else {
+//            winnerString = "Two"
+//        }
+
+//        $('$winnerDisplay').text(winnerString)
+//        $('.modal').modal('show');
+
+//     }
+// }
 
 
 
@@ -283,4 +295,12 @@ const GridChanger = {
 
     //resets the player scores and board.
     $('#resetButton').click(WinAssignAndReset.resetDueToButton)
+
+
+    // hides modal winner display event when user clicks outside body.
+    $('body').click(function(){
+        
+        $('.modal').modal('hide')
+    
+    })
 })
