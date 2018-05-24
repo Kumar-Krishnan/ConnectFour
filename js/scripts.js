@@ -12,49 +12,49 @@ $(document).ready(function() {
 // 
 
 // Global variables that count play count and win counts.
-startCount = 1
-playCount = 1
-playerOneWinCount = 0
-playerTwoWinCount = 0
+    startCount = 0
+    playCount = 1
+    playerOneWinCount = 0
+    playerTwoWinCount = 0
 
-const ClickableObject = {
+    const ClickableObject = {
 
-    changeColor : function (x){
-        let newValue = 0
-        // using modue to determine which value to assign to grid, modulusing ever increasing playcount by 2
-        if (playCount%2 === 1) {
-            newValue = 1
+        changeColor : function (x){
+            let newValue = 0
+            // using modue to determine which value to assign to grid, modulusing ever increasing playcount by 2
+            if (playCount%2 === 1) {
+                newValue = 1
 
-        } 
-        else {
-            newValue = 2
+            } 
+            else {
+                newValue = 2
 
+            }
+            // skip over tiles that already have a red or black color value (1, or 2) and assign the new player color to the first element in the column that was clicked.
+            GridChanger.gridAssigner(x,newValue)
+            // for (checker = 0; checker < 6; checker++){
+            //     if (greaterObjectArray[checker][x] !== 0) {
+            //         continue
+            //     } else {
+            //         greaterObjectArray[checker][x] = newValue
+
+
+            //         ColorChanger.gridColorer(x,checker,newValue)
+            //         WinChecker.horizontalWinner()
+            //         WinChecker.verticalWinner()
+            //         WinChecker.upDiagonalWinner()
+            //         WinChecker.downDiagonalWinner()
+            //         playCount = playCount +1 
+            //         WinAssignAndReset.resetDueToDraw()
+
+            //         console.log(playCount)
+            //         console.log(greaterObjectArray)                
+                    
+            //         break
+            //     }
+            // }
         }
-        // skip over tiles that already have a red or black color value (1, or 2) and assign the new player color to the first element in the column that was clicked.
-        GridChanger.gridAssigner(x,newValue)
-        // for (checker = 0; checker < 6; checker++){
-        //     if (greaterObjectArray[checker][x] !== 0) {
-        //         continue
-        //     } else {
-        //         greaterObjectArray[checker][x] = newValue
-
-
-        //         ColorChanger.gridColorer(x,checker,newValue)
-        //         WinChecker.horizontalWinner()
-        //         WinChecker.verticalWinner()
-        //         WinChecker.upDiagonalWinner()
-        //         WinChecker.downDiagonalWinner()
-        //         playCount = playCount +1 
-        //         WinAssignAndReset.resetDueToDraw()
-
-        //         console.log(playCount)
-        //         console.log(greaterObjectArray)                
-                
-        //         break
-        //     }
-        // }
     }
-}
 
 
 
@@ -242,11 +242,14 @@ const ColorChanger = {
 
 
 // pulls column/x value  of column that was clicked from game board and assigns it to Xclick. Xclick is then fed into changeGrid function.
-$('.col').click(function(){
-    if(startCount > 0) {
-        let xClick = $(this).attr('x')
-        ClickableObject.changeColor(xClick)
-    }
-})
+    $('.col').click(function(){
+        if(startCount > 0) {
+            let xClick = $(this).attr('x')
+            ClickableObject.changeColor(xClick)
+        }
+    })
 
+    $('#startButton').click(function(){
+        startCount = 1
+    })
 });
