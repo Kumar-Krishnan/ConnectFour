@@ -28,6 +28,11 @@ The challenges of the project
    Libraries used:  Twitter Bootstrap (only for one function, modal for alerting winners.
                     Jquery (extensively for JS to HTML interaction), 
                     GoogleFonts(Righteous)
+  
+  
+  BitBaloon
+  ----------
+  http://modest-johnson-4e9520.bitballoon.com/
    
    
    Wire Frame:
