@@ -1,6 +1,8 @@
 /* setting the properties for the outermost container, the whole of the 
 game board. Setting the number of columns in the container and making display responsive through using vw vh */
-
+*{
+    font-family: 'Righteous', cursive;
+}
 .gameContainer{
     background-color:black;
     width: 60vw;
@@ -11,6 +13,7 @@ game board. Setting the number of columns in the container and making display re
     grid-template-columns: repeat(7, 1fr);
     border: 2px solid red;
     border-radius: 3%;
+    
 
 }
 
@@ -37,7 +40,12 @@ game board. Setting the number of columns in the container and making display re
     border-radius: 55%; 
 }
 body{
-    background: linear-gradient(to bottom, rgb(182, 90, 14), rgb(204, 193, 193))
+    background: linear-gradient(to bottom, rgb(10, 150, 66), rgb(8, 156, 57));
+    margin: 0 0 0 0;
+    border-bottom-left-radius: 25px;
+}
+html{
+    background: linear-gradient(to bottom, rgba(4, 27, 13, 0.781), rgba(7, 231, 82, 0.24));
 
 }
 
@@ -59,12 +67,22 @@ header{
 .totalBoardWithInstructions{
     display:grid;
     grid-template-columns: 1fr 3fr 1fr;
-    background-color: teal;
+    background-color: rgb(10, 150, 66);
+    border: 2px solid rgb(25, 224, 231);
 }
 .instructions{
     display:grid;
     grid-template-rows: 2fr 1fr 2fr;
+    background-color: black;
+    border-radius: 25px;
 }
+.actualInstructions{
+    border: 2px solid rgb(255, 196, 0);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+
 .resetter{
     text-align: center;
 }
@@ -76,25 +94,56 @@ header{
 }
 
 
-h3.a{
-text-align: left;
+h4.a{
+text-align: center;
+color: rgb(25, 224, 231);
 }
 
-h3.b{
-    text-align: left;
+h4.b{
+    text-align: center;
+    color: rgb(255, 196, 0);
 }
 
 div.playerOneScoreBoard{
-    border: 2px solid black;
-    background-color: rgb( 50, 200,240);
-
+    border: 2px solid rgb(255, 196, 0);
+    background-color: black;
+    border-radius: 8px;
+    color:white;
 }
 div.playerTwoScoreBoard {
-    border: 2px solid black;
-    background-color: rgb( 50, 200,240);
+    border: 2px solid rgb(25, 224, 231);
+    background-color: black;
+    border-radius: 8px;
+    color: white;
 
 }
 button{
     height: 30px;
     width: 60px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index: 1;
+    width: 70%;
+    overflow: auto;
+    background-color: black;
+}
+.gameInstructions{
+    color: white;
+}
+h1{
+    color: Red;
+}
+h1 #titleSpan{
+    color:green;
+}
+.gameInstructions{
+    padding: 0 9px;
+}
+.history{
+    background: black;
+    border: 2px solid rgb(25, 224, 231);
+    border-radius:25px;
 }

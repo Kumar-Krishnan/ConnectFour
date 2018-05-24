@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
     <title>Document</title>
 </head>
 <body>
 
     <header>
-        <h1 class="begginingTitle">CONNECT FOUR</h1>
+        <h1 class="begginingTitle">CONNECT <span id="titleSpan">FOUR</span></h1>
     </header>
     <div class="grid totalBoardWithInstructions"> 
 <!-- 
@@ -30,17 +32,24 @@
 
         <div class="grid instructions">
             <div class="grid scores">
-                <div class="playerOneScoreBoard"><p class="playerOneWin playerWin"> <h3 class="a">Player One Wins: <span id="playerOneScore">0</span></h3> </p>
+                <div class="playerOneScoreBoard"><p class="playerOneWin playerWin"> <h4 class="a">Player One Score: <span id="playerOneScore">0</span></h3> </p>
                 </div>
         
-                <div class="playerTwoScoreBoard"> <p class="playerTwoWin playerWin"> <h3 class="b">Player Two Wins: <span id="playerTwoScore">0</span></h3> </p>
+                <div class="playerTwoScoreBoard"> <p class="playerTwoWin playerWin"> <h4 class="b">Player Two Score: <span id="playerTwoScore">0</span></h3> </p>
                 </div>
             </div>
             <div class="resetter">
+                <div class="start">
+                <button>START</button>
+                </div>
+                <div class="reset">
                 <button>RESET</button>
+                </div>
             </div>
             <div class="actualInstructions">
-
+                <p class="gameInstructions">The aim of this game is to place four pieces on the board of the same color in a consecutive fashion, next to each other.
+                    It can be consecutive in the horizontal direction -, vertical direction | or the diagonal directions \/
+                </p>
             </div>
 
         </div>
@@ -235,6 +244,15 @@
 
 
             </div>
+            <div class="modal" id="playerOneWinModal">
+                "PLAYER ONE WINS"
+            </div>
+            <div class="modal" id="playerTwoWinModal">
+                "PLAYER TWO WINS"
+            </div>
+            <div class="modal" id="drawModal">
+                "PLAYERS ARE TIED. PLAY AGAIN"
+            </div>
     </div>    
 
 
@@ -247,3 +265,8 @@
     <script src="js/scripts.js"></script>
 </body>
 </html>
+
+
+
+
+
