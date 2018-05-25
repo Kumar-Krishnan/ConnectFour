@@ -32,8 +32,7 @@ The challenges of the project
   
   BitBaloon
   ----------
-  http://modest-johnson-4e9520.bitballoon.com/
-   
+http://dazzling-austin-af8cfb.bitballoon.com/   
    
    Wire Frame:
    ----------
