@@ -28,7 +28,7 @@ $(document).ready(function() {
 
         clickConsequence : function (x){
             let newValue = 0
-            // using modue to determine which value to assign to grid, modulusing ever increasing playcount by 2
+            // using modulus to determine which value to assign to grid, modulusing ever increasing playcount by 2
             if (playCount%2 === 1) {
                 newValue = 1
 
@@ -43,8 +43,54 @@ $(document).ready(function() {
         }
     }
 
+// responsible for taking in user input through clicking and then changing the grid value and then pulling all cascading functions. 
+const GridChanger = {
+
+    gridAssigner : function(x,newValue) {
+    
+        for (row = 0; row < 6; row++){
+            if (greaterObjectArray[row][x] !== 0) {
+                continue
+            } else {
+                greaterObjectArray[row][x] = newValue
+                ColorChanger.gridColorer(x,row,newValue)
+                WinChecker.horizontalWinner()
+                WinChecker.verticalWinner()
+                WinChecker.upDiagonalWinner()
+                WinChecker.downDiagonalWinner()
+                playCount = playCount +1 
+                WinAssignAndReset.resetDueToDraw()
+                console.log(greaterObjectArray)
+
+                 
+                
+                break
+            }
+        }
+    }
+}
 
 
+// reponsible for parsing column visual grid attribute values into strings, conconating to .col and .row to choose specific grid box to be 
+// colored and change color, based on modus of global play count to appropriate player color.
+const ColorChanger = {
+
+    gridColorer : function(x,y,player) {
+        var columnCoordinate = x.toString()
+        var columnCoordinateName = ".col" + columnCoordinate
+        var rowCoordinate = y.toString()
+        var rowCoordinateName = ".row" + rowCoordinate
+    
+        const changedBox = $(rowCoordinateName, columnCoordinateName)
+        if (player === 1) {
+        $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
+        } else if (player === 2){
+        $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 150, 50),rgb(230, 50, 35)')    
+        }
+
+    }
+
+}
 
 
 
@@ -208,53 +254,8 @@ const WinAssignAndReset = {
 
     }
 }
-// reponsible for parsing column visual grid attribute values into strings, conconating to .col and .row to choose specific grid box to be 
-// colored and change color, based on modus of global play count to appropriate player color.
-const ColorChanger = {
 
-    gridColorer : function(x,y,player) {
-        var columnCoordinate = x.toString()
-        var columnCoordinateName = ".col" + columnCoordinate
-        var rowCoordinate = y.toString()
-        var rowCoordinateName = ".row" + rowCoordinate
-    
-        const changedBox = $(rowCoordinateName, columnCoordinateName)
-        if (player === 1) {
-        $(changedBox).css("background", 'linear-gradient(to top, rgb(231, 255, 255), rgb(114, 195, 222))')
-        } else if (player === 2){
-        $(changedBox).css("background", 'linear-gradient(to top, rgb(254, 150, 50),rgb(230, 50, 35)')    
-        }
 
-    }
-
-}
-
-// responsible for taking in user input through clicking and then changing the grid value and then pulling all cascading functions. 
-const GridChanger = {
-
-    gridAssigner : function(x,newValue) {
-    
-        for (row = 0; row < 6; row++){
-            if (greaterObjectArray[row][x] !== 0) {
-                continue
-            } else {
-                greaterObjectArray[row][x] = newValue
-                ColorChanger.gridColorer(x,row,newValue)
-                WinChecker.horizontalWinner()
-                WinChecker.verticalWinner()
-                WinChecker.upDiagonalWinner()
-                WinChecker.downDiagonalWinner()
-                playCount = playCount +1 
-                WinAssignAndReset.resetDueToDraw()
-                console.log(greaterObjectArray)
-
-                 
-                
-                break
-            }
-        }
-    }
-}
 
 
 // new icebox project
