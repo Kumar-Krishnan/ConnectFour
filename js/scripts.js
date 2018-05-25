@@ -12,9 +12,7 @@ $(document).ready(function() {
                             [0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0]]
-
-   console.log(greaterObjectArray)
-// 
+ 
 
 // Global variables that count play count and win counts and who started first last round.
 
@@ -61,7 +59,6 @@ const WinChecker = {
             for (let column = 0; column < 6; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row][column+ 1] && greaterObjectArray[row][column] === greaterObjectArray[row][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row][column+3] && greaterObjectArray[row][column] !== 0) {
                     WinAssignAndReset.winConditionMet()
-                    console.log("YOU ARE A WINNER!")
                     break
                 }
                 else {
@@ -77,7 +74,6 @@ const WinChecker = {
             for (let column = 0; column < 7; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row+1][column] && greaterObjectArray[row][column] === greaterObjectArray[row+2][column] && greaterObjectArray[row][column] === greaterObjectArray[row+3][column] && greaterObjectArray[row][column] !== 0) {
                     WinAssignAndReset.winConditionMet()
-                    console.log("YOU ARE A WINNER!")
                     break
                 }
                 else {
@@ -92,10 +88,9 @@ const WinChecker = {
 
         for (let row = 0; row < 2; row++){
 
-            for (let column = 0; column < 3; column++) {
+            for (let column = 0; column < 4; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row+1][column+1] && greaterObjectArray[row][column] === greaterObjectArray[row+2][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row+3][column+3] && greaterObjectArray[row][column] !== 0) {
                     WinAssignAndReset.winConditionMet()
-                    console.log("YOU ARE A WINNER!")
                     break
                 }
                 else {
@@ -109,10 +104,9 @@ const WinChecker = {
     downDiagonalWinner : function() {
 
         for (let row = 5; row > 2; row--){
-            for (let column = 0; column < 3; column++) {
+            for (let column = 0; column < 4; column++) {
                 if (greaterObjectArray[row][column] === greaterObjectArray[row-1][column+1] && greaterObjectArray[row][column] === greaterObjectArray[row-2][column+2] && greaterObjectArray[row][column] === greaterObjectArray[row-3][column+3] && greaterObjectArray[row][column] !== 0) {
                     WinAssignAndReset.winConditionMet()
-                    console.log("YOU ARE A WINNER!")
                     break
                 }
                 else {
@@ -252,9 +246,9 @@ const GridChanger = {
                 WinChecker.downDiagonalWinner()
                 playCount = playCount +1 
                 WinAssignAndReset.resetDueToDraw()
+                console.log(greaterObjectArray)
 
-                console.log(playCount)
-                console.log(greaterObjectArray)                
+                 
                 
                 break
             }
@@ -262,23 +256,14 @@ const GridChanger = {
     }
 }
 
-// const WinDisplayer = {
-    
-//     showWinner : function(winner){
-//        let winnerString = ""
 
-//        if (winner === 1) {
-//            winnerString = "One"
-//        } else {
-//            winnerString = "Two"
-//        }
+// new icebox project
+// const GridBattleInitiator = {
 
-//        $('$winnerDisplay').text(winnerString)
-//        $('.modal').modal('show');
+//     lightCycleBegins : function () {
 
 //     }
 // }
-
 
 
 // all button interactions.
