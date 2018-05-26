@@ -198,10 +198,14 @@ const WinAssignAndReset = {
         greaterObjectArray[3] = [0,0,0,0,0,0,0]
         greaterObjectArray[4] = [0,0,0,0,0,0,0]
         greaterObjectArray[5] = [0,0,0,0,0,0,0]
-        if(whichPlayerLeads%2 === 0){
+        if(whichPlayerLeads%2 === 0 && whichPlayerLeads != 1337){
             playCount = 0
-        } else {
+        } else if (whichPlayerLeads%2 ===0 && whichPlayerLeads != 1337){
             playCount = 1
+        }
+        else if (whichPlayerLeads === 1337){
+            playCount = 1 
+            whichPlayerLeads = 0
         }
         whichPlayerLeads++
     },
@@ -248,7 +252,7 @@ const WinAssignAndReset = {
         playerOneWinCount = 0
         playerTwoWinCount = 0
         WinAssignAndReset.updateGameScoreBoard()
-        whichPlayerLeads = 1
+        whichPlayerLeads = 1337
         playCount = 1
         WinAssignAndReset.resetDueToWin()
 
