@@ -32,7 +32,7 @@ The challenges of the project
   
   BitBaloon
   ----------
-http://dazzling-austin-af8cfb.bitballoon.com/   
+vibrant-rosalind-8cefd3.bitballoon.com
    
    Wire Frame:
    ----------
