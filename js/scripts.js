@@ -263,12 +263,15 @@ const WinAssignAndReset = {
 
 
 // new icebox project
-// const GridBattleInitiator = {
+const GridBattleInitiator = {
 
-//     lightCycleBegins : function () {
-
-//     }
-// }
+    lightCycleBegins : function () {
+        $('.col').css("border-top-color", "red")
+        $('.col').css("border-right-color", "red")
+        $('.col').css("border-bottom-color", "red")
+        // $('.col').css("border-left-color", "red")
+    }
+}
 
 
 // all button interactions.
@@ -286,6 +289,7 @@ const WinAssignAndReset = {
         let audioBegin = new Audio('../audio/battle.mp3')
 
         audioBegin.play()
+        GridBattleInitiator.lightCycleBegins()
     })
 
     //resets the player scores and board.

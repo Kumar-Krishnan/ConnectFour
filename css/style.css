@@ -20,9 +20,12 @@ game board. Setting the number of columns in the container and making display re
 /* setting the display property of columns, giving border and rounding out shape of columns*/
 .col{
     background-color: black;
-    border: 2px solid red;
+    border: 2px solid transparent;
     border-radius: 100px;
-
+    transition: border-top 2s step-end;
+    transition: border-right 5s step-end .30s;
+    transition: border-bottom 10s step-end .60;
+    transition: border-left 15s step-end .90s;
 }
 
 /* setting row elements across 7 columns using grid property on container columns*/
