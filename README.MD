@@ -1,4 +1,3 @@
-                                                    Connect Four
 # Connect Four
 
 * Deployed on Netlify: http://vibrant-rosalind-8cefd3.netlify.com/
@@ -27,13 +26,10 @@
 ## Wire Frame
 
  ![](https://i.imgur.com/DKeuU0C.jpg)
- ![](https://imgur.com/3qbxS9v)
- ![](https://imgur.com/E3XwPtE)
- ![](https://imgur.com/VEGsMGg)
- ![](https://imgur.com/RmjCYLo)
- ![](https://imgur.com/NXwGbTy)
- ![](https://imgur.com/vcegdmm)
- ![](https://imgur.com/KXriu7W)
+ ![](https://i.imgur.com/3qbxS9v.jpg)
+ ![](https://i.imgur.com/E3XwPtE.jpg)
+ ![](https://i.imgur.com/VEGsMGg.jpg)
+ ![](https://i.imgur.com/KXriu7W.jpg)
 
 ## Future Development
 * Sound when the game initializes.
